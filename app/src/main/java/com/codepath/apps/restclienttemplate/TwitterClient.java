@@ -1,7 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.codepath.oauth.OAuthBaseClient;
 import com.github.scribejava.apis.TwitterApi;
@@ -66,10 +65,20 @@ public class TwitterClient extends OAuthBaseClient {
         params.put("status", message);
 		if (replyId != null) {
 			params.put("in_reply_to_status_id", replyId);
-            Log.d("DEBUG:CLIENT", replyId);
 		}
         getClient().post(apiUrl, params, handler);
-        Log.d("TwitterClient", apiUrl);
-        Log.d("TwitterClient", message);
+    }
+
+    public void likeTweet (String id, JsonHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("favorites/create.json");
+        RequestParams params = new RequestParams();
+        params.put("id", id);
+        getClient().post(apiUrl, params, handler);
+	}
+
+	public void retweetTweet(String id, boolean retweeted, JsonHttpResponseHandler handler) {
+        String apiUrl = (retweeted) ? getApiUrl("statuses/unretweet/" + id + ".json") :
+                getApiUrl("statuses/retweet/" + id + ".json");
+        getClient().post(apiUrl, null, handler);
     }
 }

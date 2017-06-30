@@ -22,6 +22,9 @@ public class Tweet {
     public User user;
     public String createdAt;
     public String imageUrl;
+    public int replyNum;
+    public int retweetNum;
+    public int likeNum;
 
     public Tweet() {}
 
@@ -33,6 +36,10 @@ public class Tweet {
         tweet.user = User.fromJSON(object.getJSONObject("user"));
         tweet.createdAt = getRelativeTimeAgo(object.getString("created_at"));
         tweet.imageUrl = "";
+
+//        tweet.replyNum = object.getInt();
+        tweet.likeNum = (object.has("favorite_count")) ? object.getInt("favorite_count") : 0;
+        tweet.retweetNum = object.getInt("retweet_count");
 
         JSONObject tempObject = object.getJSONObject("entities");
         if (tempObject.has("media")) {

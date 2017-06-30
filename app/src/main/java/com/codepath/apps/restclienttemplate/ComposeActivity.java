@@ -49,8 +49,9 @@ public class ComposeActivity extends AppCompatActivity {
         etNewTweet = (EditText) findViewById(R.id.etNewTweet);
         etNewTweet.addTextChangedListener(mTextEditorWatcher);
         if (mIntent.getStringExtra("function").equals("reply")) {
-            etNewTweet.setText("@" + ((Tweet) Parcels.unwrap(mIntent.getParcelableExtra("tweet"))).user.username);
+            etNewTweet.setText("@" + ((Tweet) Parcels.unwrap(mIntent.getParcelableExtra("tweet"))).user.username + " ");
         }
+        etNewTweet.setSelection(etNewTweet.getText().length());
     }
 
     public void onSubmit(View v) {

@@ -1,6 +1,5 @@
 package com.codepath.apps.restclienttemplate;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -19,8 +18,6 @@ import org.parceler.Parcels;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
-
-import static com.codepath.apps.restclienttemplate.TimelineActivity.REPLY_TWEET;
 
 /**
  * Created by mpan on 6/26/17.
@@ -53,29 +50,25 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         holder.tvBody.setText(tweet.body);
         holder.tvTimestamp.setText(tweet.createdAt);
 
+        holder.tvRetweetNum.setText((tweet.retweetNum == 0) ? "" : Integer.toString(tweet.retweetNum));
+        holder.tvLikeNum.setText((tweet.likeNum == 0) ? "" : Integer.toString(tweet.likeNum));
+
         Glide.with(context)
                 .load(tweet.user.profileImageUrl)
                 .bitmapTransform(new RoundedCornersTransformation(context, 5, 0))
                 .into(holder.ivProfileImage);
 
         if(!tweet.imageUrl.equals("")) {
+            holder.ivMedia.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(tweet.imageUrl)
                     .bitmapTransform(new RoundedCornersTransformation(context, 5, 0))
                     .into(holder.ivMedia);
         } else {
-            holder.ivMedia.setVisibility(View.INVISIBLE);
+            holder.ivMedia.setVisibility(View.GONE);
         }
 
-        holder.ibReply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, ComposeActivity.class);
-                intent.putExtra("function", "reply");
-                intent.putExtra("tweet", Parcels.wrap(tweet));
-                ((Activity) context).startActivityForResult(intent, REPLY_TWEET);
-            }
-        });
+        holder.ibReply.setOnClickListener(new ReplyButtonListener(tweet, context));
     }
 
     public void clear() {
@@ -104,7 +97,12 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         public ImageView ivMedia;
 
         public ImageButton ibReply;
+        public ImageButton ibRetweet;
         public ImageButton ibLike;
+
+        public TextView tvReplyNum;
+        public TextView tvRetweetNum;
+        public TextView tvLikeNum;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -117,7 +115,12 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             ivMedia = (ImageView) itemView.findViewById(R.id.ivMedia);
 
             ibReply = (ImageButton) itemView.findViewById(R.id.ibReply);
+            ibRetweet = (ImageButton) itemView.findViewById(R.id.ibRetweet);
             ibLike = (ImageButton) itemView.findViewById(R.id.ibLike);
+
+            tvReplyNum = (TextView) itemView.findViewById(R.id.tvReplyNum);
+            tvRetweetNum = (TextView) itemView.findViewById(R.id.tvRetweetNum);
+            tvLikeNum = (TextView) itemView.findViewById(R.id.tvLikeNum);
 
             itemView.setOnClickListener(this);
         }

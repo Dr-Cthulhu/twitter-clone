@@ -59,7 +59,7 @@ local.properties
 
 # Android Studio project files
 *.iml
-*.secret
+*.secret.xml
 .gradle
 .idea
 build
