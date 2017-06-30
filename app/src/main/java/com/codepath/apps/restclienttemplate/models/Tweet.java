@@ -24,7 +24,9 @@ public class Tweet {
     public String imageUrl;
     public int replyNum;
     public int retweetNum;
+    public boolean retweeted;
     public int likeNum;
+    public boolean liked;
 
     public Tweet() {}
 
@@ -36,6 +38,8 @@ public class Tweet {
         tweet.user = User.fromJSON(object.getJSONObject("user"));
         tweet.createdAt = getRelativeTimeAgo(object.getString("created_at"));
         tweet.imageUrl = "";
+        tweet.retweeted = object.getBoolean("retweeted");
+        tweet.liked = object.getBoolean("favorited");
 
 //        tweet.replyNum = object.getInt();
         tweet.likeNum = (object.has("favorite_count")) ? object.getInt("favorite_count") : 0;

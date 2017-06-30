@@ -68,7 +68,7 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:background="#00000000"
-        app:srcCompat="@drawable/ic_vector_retweet_stroke"
+        app:srcCompat="@drawable/ic_retweet_selector"
         android:layout_alignBottom="@+id/divider_bar"
         android:layout_alignStart="@+id/ibReply"
         android:layout_marginStart="80dp"/>
@@ -78,7 +78,7 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:background="#00000000"
-        app:srcCompat="@drawable/ic_vector_heart_stroke"
+        app:srcCompat="@drawable/ic_heart_selector"
         android:layout_alignBottom="@+id/divider_bar"
         android:layout_alignStart="@+id/ibRetweet"
         android:layout_marginStart="80dp" />
