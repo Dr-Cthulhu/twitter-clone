@@ -16,6 +16,10 @@ public class User {
     public String username;
     public String profileImageUrl;
 
+    public String tagline;
+    public int followersCount;
+    public int followingCount;
+
     public User () {}
 
     public String getUsername() {
@@ -28,6 +32,10 @@ public class User {
         user.name = object.getString("name");
         user.uid = object.getLong("id");
         user.username = object.getString("screen_name");
+        user.tagline = object.getString("description");
+        user.followersCount = object.getInt("followers_count");
+        user.followingCount = object.getInt("friends_count");
+
         user.profileImageUrl = object.getString("profile_image_url");
 
         return user;

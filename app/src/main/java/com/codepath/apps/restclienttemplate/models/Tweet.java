@@ -60,6 +60,16 @@ public class Tweet {
         return String.format("Username: %s\nBody: %s\nUID: %s\nCreated at: %s", user.getUsername(), body, uid, createdAt);
     }
 
+    public void setRetweet() {
+        retweeted = !retweeted;
+        retweetNum =  (retweeted) ? retweetNum + 1 : retweetNum - 1;
+    }
+
+    public void setLike() {
+        liked = !liked;
+        likeNum =  (liked) ? likeNum + 1 : likeNum - 1;
+    }
+
     public static String getRelativeTimeAgo(String rawJsonDate) {
         String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
         SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
