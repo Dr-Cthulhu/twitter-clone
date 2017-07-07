@@ -37,7 +37,10 @@
             android:text="Tagline"
             android:layout_alignStart="@id/tvName"
             android:layout_below="@id/tvName"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:autoLink="all"
+            android:linksClickable="true"
+            android:textColorLink="@color/twitter_blue"/>
 
     </RelativeLayout>
 
