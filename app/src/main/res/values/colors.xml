@@ -21,4 +21,5 @@
     <color name="inline_action_retweet_pressed">@color/medium_gray_50</color>
     <color name="black">#2e2e2e</color>
     <color name="darker_black">#272727</color>
+    <color name="white">#fafafa</color>
 </resources>

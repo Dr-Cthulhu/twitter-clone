@@ -131,7 +131,7 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
             switch (id) {
 
                 case R.id.ibReply:
-                    Log.e("DEBUG:ONCLICK", "entered reply case");
+//                    Log.e("DEBUG:ONCLICK", "entered reply case");
                     Intent intent = new Intent(context, ComposeActivity.class);
                     intent.putExtra("function", "reply");
                     intent.putExtra("tweet", Parcels.wrap(tweet));
@@ -139,7 +139,7 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
                     break;
 
                 case R.id.ibRetweet:
-                    Log.e("DEBUG:ONCLICK", "entered retweet case");
+//                    Log.e("DEBUG:ONCLICK", "entered retweet case");
                     TwitterClient client = getRestClient();
                     client.retweetTweet(Long.toString(tweet.uid), tweet.retweeted, new JsonHttpResponseHandler() {
                         @Override
@@ -147,7 +147,7 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
                             Log.d("DEBUG:LIKE", "success");
                             tweet.setRetweet();
                             ImageButton ibRetweet = (ImageButton) v;
-                            ibRetweet.setImageResource((tweet.retweeted) ? R.drawable.ic_vector_retweet : R.drawable.ic_vector_retweet_stroke);
+                            ibRetweet.setImageResource((tweet.retweeted) ? R.drawable.ic_vector_retweet : R.drawable.ic_retweet_selector);
                         }
 
                         @Override
@@ -159,7 +159,7 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
                     break;
 
                 case R.id.ibLike:
-                    Log.e("DEBUG:ONCLICK", "entered like case");
+//                    Log.e("DEBUG:ONCLICK", "entered like case");
                     client = getRestClient();
                     client.likeTweet(Long.toString(tweet.uid), tweet.liked, new JsonHttpResponseHandler() {
                         @Override
@@ -167,7 +167,7 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
                             Log.d("DEBUG:LIKE", "success");
                             tweet.setLike();
                             ImageButton ibLike = (ImageButton) v;
-                            ibLike.setImageResource((tweet.liked) ? R.drawable.ic_vector_heart : R.drawable.ic_vector_heart_stroke);
+                            ibLike.setImageResource((tweet.liked) ? R.drawable.ic_vector_heart : R.drawable.ic_heart_selector);
                         }
 
                         @Override
@@ -179,7 +179,7 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
                     break;
 
                 case R.id.ivProfileImage:
-                    Log.e("DEBUG:ONCLICK", "entered profile image case");
+//                    Log.e("DEBUG:ONCLICK", "entered profile image case");
                     intent = new Intent(context, ProfileActivity.class);
                     intent.putExtra("user", Parcels.wrap(tweet.user));
                     intent.putExtra("screen_name", tweet.user.username);
@@ -187,7 +187,7 @@ public class TweetsListFragment extends Fragment implements TweetAdapter.TweetAd
                     break;
 
                 default:
-                    Log.e("DEBUG:ONCLICK", "entered default case");
+//                    Log.e("DEBUG:ONCLICK", "entered default case");
                     intent = new Intent(context, TweetDetailsActivity.class);
                     intent.putExtra("tweet", Parcels.wrap(tweet));
                     context.startActivity(intent);

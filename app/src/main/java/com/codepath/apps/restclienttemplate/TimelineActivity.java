@@ -34,28 +34,6 @@ public class TimelineActivity extends AppCompatActivity implements TweetsListFra
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
 
-//        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
-//
-//        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                // Your code to refresh the list here.
-//                // Make sure you call swipeContainer.setRefreshing(false)
-//                // once the network request has completed successfully.
-//                populateTimeline();
-//            }
-//        });
-//        // Configure the refreshing colors
-//        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
-//                android.R.color.holo_green_light,
-//                android.R.color.holo_orange_light,
-//                android.R.color.holo_red_light);
-
-//        ViewPager vpPager = (ViewPager) findViewById(R.id.viewpager);
-//        vpPager.setAdapter(new TweetsPagerAdapter(getSupportFragmentManager(), this));
-//        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-//        tabLayout.setupWithViewPager(vpPager);
-
         vPgr = (ViewPager) findViewById(R.id.viewpager);
         pagerAdapter = new TweetsPagerAdapter(getSupportFragmentManager(), this);
         vPgr.setAdapter(pagerAdapter);
@@ -71,7 +49,25 @@ public class TimelineActivity extends AppCompatActivity implements TweetsListFra
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.timeline, menu);
-        return true;
+//        MenuItem searchItem = menu.findItem(R.id.action_search);
+//        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                getRestClient().getSearchResults(query, new JsonHttpResponseHandler() {
+//
+//                });
+//                searchView.clearFocus();
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                return false;
+//            }
+//        });
+        return super.onCreateOptionsMenu(menu);
+
     }
 
     public void onComposeAction(MenuItem mi) {

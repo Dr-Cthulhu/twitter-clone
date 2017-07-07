@@ -52,21 +52,6 @@ public class TweetsPagerAdapter extends FragmentPagerAdapter {
         timelineFragment.addTweet(tweet);
     }
 
-//    private HomeTimelineFragment getTimelineInstance() {
-//        if (timelineFragment == null) {
-//            timelineFragment = new HomeTimelineFragment();
-//        }
-//        return timelineFragment;
-//    }
-//
-//    private MentionsTimelineFragment getMentionsInstance() {
-//        if (mentionsFragment == null) {
-//            mentionsFragment = new MentionsTimelineFragment();
-//        }
-//        return mentionsFragment;
-//    }
-
-    // return title
     @Override
     public CharSequence getPageTitle(int position) {
         return null;
