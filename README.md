@@ -66,7 +66,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-https://www.dropbox.com/s/yv1sl4xqnyj53gw/twitter_demo.mp4?dl=0
+https://www.dropbox.com/s/xr0st92xmqk0r3a/twitter_demo_2.mp4?dl=0
 
 ## Notes
 
